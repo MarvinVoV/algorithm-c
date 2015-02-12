@@ -30,9 +30,7 @@ int push(char c){
 	return 1;
 }
 char pop(){
-	if(isEmpty())
-		return 0;
-	return *--p;
+	return isEmpty() ? 0 : *--p;
 }
 int size(){
 	return p-buf;
