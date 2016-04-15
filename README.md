@@ -1,2 +1,2 @@
-# c_basis
-c languague basis 
+# Data Structure and Algorithm in C
+
