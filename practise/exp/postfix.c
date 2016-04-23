@@ -6,13 +6,8 @@ typedef enum {
     lparen, rparen, plus, minus, times, divide, mod, eos, operand
 } precedence;
 
-char expr[MAX_EXPR_SIZE] =  {'2', '3','4','*','+',' '}; /* input string */
 
-precedence get_token(char *symbol, int *n);
-int eval(void);
-
-
-precedence get_token(char *symbol, int *n){
+precedence get_token(char *symbol, char *expr, int *n){
     *symbol = expr[(*n)++];
     switch(*symbol){
         case '(': return lparen;
@@ -20,19 +15,19 @@ precedence get_token(char *symbol, int *n){
         case '+': return plus;
         case '-': return minus;
         case '/': return divide;
-        case '*': return divide;
+        case '*': return times;
         case '%': return mod;
-        case ' ': return eos;
+        case '\0': return eos;
         default: return operand; /* no error checking, default is operand */
     }
 }
 
-int eval(void){
+int eval(char *expr){
     precedence token;
     char symbol;
     int op1, op2;
     int n = 0; /* counter for the expression string */
-    token = get_token(&symbol, &n);
+    token = get_token(&symbol, expr,  &n);
     while(token != eos){
         if(token == operand)
             add(symbol - '0'); /* stack insert */
@@ -52,12 +47,13 @@ int eval(void){
                 case mod: add(op1 % op2);
             }
         }
-        token = get_token(&symbol, &n);
+        token = get_token(&symbol, expr,  &n);
     }
     return delete(); /* return result */
 }
 
 int main(void){
-    printf("result is %d\n", eval());
+	char *s = "23*45*+";
+    printf("result is %d\n", eval(s));
     return 0;
 }
