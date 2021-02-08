@@ -99,7 +99,7 @@ int main(void){
     delete(header, 3);
     printf("list size is %d\n", size(header));
     */
-    // test merge
+    // tutorial merge
     printf("create first sorted list\n");
     node_ptr h1 = create();
     printf("create second sorted list\n");
