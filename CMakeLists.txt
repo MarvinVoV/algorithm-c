@@ -18,6 +18,7 @@ add_executable(full_permutation src/sort/full_permutation.c)
 add_executable(circle_queue src/data_structure/queue/circle_queue.c)
 add_executable(list src/data_structure/list/list.c)
 add_executable(quick_sort src/sort/quick_sort.c)
+add_executable(int_reverse src/number/int_reverse.c)
 
 #include_directories(list)
 
